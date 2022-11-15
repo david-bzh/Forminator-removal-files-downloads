@@ -45,3 +45,30 @@ add_filter(
 	10,
 	4
 );
+
+/**
+ * Remove files uploaded from Forminator
+ */
+add_action(
+	'forminator_custom_form_mail_after_send_mail',
+	function( Forminator_CForm_Front_Mail $form, Forminator_Form_Model $custom_form ) {
+
+		$settings = $custom_form->get_form_settings();
+
+		if ( 'delete' === $settings['submission-file'] ) {
+
+			$upload_dir = wp_upload_dir();
+			$folder     = $upload_dir['basedir'];
+			$recursive  = true;
+			if ( ! class_exists( 'WP_Filesystem_Direct', false ) ) {
+				require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+				require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+			}
+			$filesystem = new WP_Filesystem_Direct( null );
+			$filesystem->rmdir( $folder, $recursive );
+		}
+
+	},
+	10,
+	2
+);
