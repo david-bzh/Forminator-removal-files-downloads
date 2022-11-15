@@ -1,0 +1,23 @@
+{
+    "name": "david-bzh/forminator-removal-files-downloads",
+    "description": "This plugin deletes files uploaded by Forminator",
+    "type": "wordpress-muplugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "david-bzh",
+            "homepage": "https://github.com/david-bzh"
+        }
+    ],
+    "keywords": [
+        "forminator",
+        "bedrock",
+        "wordpress"
+    ],
+    "support": {
+      "issues": "https://github.com/david-bzh/forminator-removal-files-downloads/issues"
+    },
+    "require": {
+      "php": ">=7.1"
+    }
+}
